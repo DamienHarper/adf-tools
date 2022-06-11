@@ -1,0 +1,20 @@
+<?php
+
+declare(strict_types=1);
+
+namespace DH\Adf\Builder;
+
+use DH\Adf\Child\Media;
+
+trait MediaBuilder
+{
+    use BuilderInterface;
+
+    public function media(string $id, string $mediaType, string $collection, ?int $width = null, ?int $height = null, ?string $occurrenceKey = null): Media
+    {
+        $block = new Media($id, $mediaType, $collection, $width, $height, $occurrenceKey, $this);
+        $this->append($block);
+
+        return $block;
+    }
+}
