@@ -2,7 +2,7 @@
   "name": "damienharper/adf-tools",
   "description": "Atlassian Document Format PHP Tools",
   "minimum-stability": "stable",
-  "keywords": ["doctrine", "audit", "audit-log", "audit-trail"],
+  "keywords": ["atlassian", "adf"],
   "license": "MIT",
   "authors": [
     {
