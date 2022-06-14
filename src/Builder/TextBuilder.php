@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace DH\Adf\Builder;
 
-use DH\Adf\Inline\Text;
-use DH\Adf\Mark\Em;
-use DH\Adf\Mark\Link;
-use DH\Adf\Mark\Strike;
-use DH\Adf\Mark\Strong;
-use DH\Adf\Mark\Subsup;
-use DH\Adf\Mark\TextColor;
-use DH\Adf\Mark\Underline;
-use DH\Adf\Node;
+use DH\Adf\Node\Inline\Text;
+use DH\Adf\Node\Mark\Em;
+use DH\Adf\Node\Mark\Link;
+use DH\Adf\Node\Mark\Strike;
+use DH\Adf\Node\Mark\Strong;
+use DH\Adf\Node\Mark\Subsup;
+use DH\Adf\Node\Mark\TextColor;
+use DH\Adf\Node\Mark\Underline;
+use DH\Adf\Node\Node;
 
 trait TextBuilder
 {

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DH\Adf\Builder;
 
-use DH\Adf\Block\BulletList;
+use DH\Adf\Node\Block\BulletList;
 
 trait BulletListBuilder
 {

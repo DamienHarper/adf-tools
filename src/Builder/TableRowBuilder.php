@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DH\Adf\Builder;
 
-use DH\Adf\Child\TableRow;
+use DH\Adf\Node\Child\TableRow;
 
 trait TableRowBuilder
 {

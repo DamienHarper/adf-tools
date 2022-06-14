@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DH\Adf\Builder;
 
-use DH\Adf\Child\ListItem;
+use DH\Adf\Node\Child\ListItem;
 
 trait ListItemBuilder
 {

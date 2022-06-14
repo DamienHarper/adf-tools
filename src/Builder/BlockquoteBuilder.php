@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DH\Adf\Builder;
 
-use DH\Adf\Block\Blockquote;
+use DH\Adf\Node\Block\Blockquote;
 
 trait BlockquoteBuilder
 {

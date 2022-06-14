@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DH\Adf\Builder;
 
-use DH\Adf\Block\Paragraph;
+use DH\Adf\Node\Block\Paragraph;
 
 trait ParagraphBuilder
 {

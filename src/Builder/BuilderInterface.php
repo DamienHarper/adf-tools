@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DH\Adf\Builder;
 
-use DH\Adf\Node;
+use DH\Adf\Node\Node;
 
 trait BuilderInterface
 {

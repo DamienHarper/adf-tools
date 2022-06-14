@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DH\Adf\Builder;
 
-use DH\Adf\Child\TableCell;
+use DH\Adf\Node\Child\TableCell;
 
 trait TableCellBuilder
 {

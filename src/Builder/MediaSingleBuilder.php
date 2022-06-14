@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DH\Adf\Builder;
 
-use DH\Adf\Block\MediaSingle;
+use DH\Adf\Node\Block\MediaSingle;
 
 trait MediaSingleBuilder
 {

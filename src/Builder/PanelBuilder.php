@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DH\Adf\Builder;
 
-use DH\Adf\Block\Panel;
+use DH\Adf\Node\Block\Panel;
 
 trait PanelBuilder
 {

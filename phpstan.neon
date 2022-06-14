@@ -3,3 +3,8 @@ parameters:
     inferPrivatePropertyTypeFromConstructor: true
     checkMissingIterableValueType: false
     checkGenericClassInNonGenericObjectType: false
+
+    ignoreErrors:
+        # false positives
+        - '~Class DH\\Adf\\.* constructor invoked with \d parameters?, .* required\.~'
+        - '~Parameter \#1 \$.* of class DH\\Adf\\Node\\.* constructor expects .*, DH\\Adf\\Node\\BlockNode\|null given\.~'
