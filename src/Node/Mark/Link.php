@@ -42,6 +42,36 @@ class Link extends MarkNode
         );
     }
 
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    public function getHref(): string
+    {
+        return $this->href;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function getId(): ?string
+    {
+        return $this->id;
+    }
+
+    public function getCollection(): ?string
+    {
+        return $this->collection;
+    }
+
+    public function getOccurrenceKey(): ?string
+    {
+        return $this->occurrenceKey;
+    }
+
     protected function attrs(): array
     {
         $attrs = [

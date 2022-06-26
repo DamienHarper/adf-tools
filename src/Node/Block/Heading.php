@@ -51,6 +51,11 @@ class Heading extends BlockNode implements JsonSerializable
         return $node;
     }
 
+    public function getLevel(): int
+    {
+        return $this->level;
+    }
+
     protected function attrs(): array
     {
         $attrs = parent::attrs();

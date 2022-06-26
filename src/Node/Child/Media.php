@@ -55,6 +55,36 @@ class Media extends Node
         );
     }
 
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
+    public function getMediaType(): string
+    {
+        return $this->mediaType;
+    }
+
+    public function getCollection(): string
+    {
+        return $this->collection;
+    }
+
+    public function getOccurrenceKey(): ?string
+    {
+        return $this->occurrenceKey;
+    }
+
+    public function getWidth(): ?int
+    {
+        return $this->width;
+    }
+
+    public function getHeight(): ?int
+    {
+        return $this->height;
+    }
+
     protected function attrs(): array
     {
         $attrs = parent::attrs();

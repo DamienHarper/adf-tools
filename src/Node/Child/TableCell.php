@@ -93,6 +93,26 @@ class TableCell extends BlockNode implements JsonSerializable
         return $node;
     }
 
+    public function getBackground(): ?string
+    {
+        return $this->background;
+    }
+
+    public function getColspan(): ?int
+    {
+        return $this->colspan;
+    }
+
+    public function getRowspan(): ?int
+    {
+        return $this->rowspan;
+    }
+
+    public function getColwidth(): ?array
+    {
+        return $this->colwidth;
+    }
+
     protected function attrs(): array
     {
         $attrs = parent::attrs();

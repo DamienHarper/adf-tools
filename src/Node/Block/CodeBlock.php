@@ -32,9 +32,8 @@ class CodeBlock extends BlockNode implements JsonSerializable
     public static function load(array $data, ?BlockNode $parent = null): self
     {
         self::checkNodeData(static::class, $data, ['attrs']);
-        self::checkRequiredKeys(['language'], $data['attrs']);
 
-        $node = new self($data['attrs']['language'], $parent);
+        $node = new self($data['attrs']['language'] ?? null, $parent);
 
         // set content if defined
         if (\array_key_exists('content', $data)) {
@@ -47,6 +46,11 @@ class CodeBlock extends BlockNode implements JsonSerializable
         }
 
         return $node;
+    }
+
+    public function getLanguage(): ?string
+    {
+        return $this->language;
     }
 
     protected function attrs(): array

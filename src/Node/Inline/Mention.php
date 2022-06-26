@@ -68,6 +68,31 @@ class Mention extends InlineNode
         );
     }
 
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
+    public function getText(): string
+    {
+        return $this->text;
+    }
+
+    public function getAccessLevel(): ?string
+    {
+        return $this->accessLevel;
+    }
+
+    public function getUserType(): ?string
+    {
+        return $this->userType;
+    }
+
     protected function attrs(): array
     {
         $attrs = parent::attrs();

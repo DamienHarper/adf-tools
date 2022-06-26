@@ -47,6 +47,11 @@ abstract class BlockNode extends Node
         return $node;
     }
 
+    public function getContent(): array
+    {
+        return $this->content;
+    }
+
     protected function append(Node $node): void
     {
         foreach ($this->allowedContentTypes as $type) {

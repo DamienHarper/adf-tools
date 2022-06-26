@@ -65,6 +65,21 @@ class Table extends BlockNode
         return $node;
     }
 
+    public function getLayout(): string
+    {
+        return $this->layout;
+    }
+
+    public function isNumberColumnEnabled(): bool
+    {
+        return $this->isNumberColumnEnabled;
+    }
+
+    public function getLocalId(): ?string
+    {
+        return $this->localId;
+    }
+
     protected function attrs(): array
     {
         $attrs = parent::attrs();

@@ -67,6 +67,11 @@ class Panel extends BlockNode
         return $node;
     }
 
+    public function getPanelType(): string
+    {
+        return $this->panelType;
+    }
+
     protected function attrs(): array
     {
         $attrs = parent::attrs();

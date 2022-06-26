@@ -27,6 +27,11 @@ class Subsup extends MarkNode
         return new self($data['attrs']['type'] ?? 'sup');
     }
 
+    public function getType(): string
+    {
+        return $this->subType;
+    }
+
     protected function attrs(): array
     {
         return [

@@ -35,6 +35,16 @@ class InlineCard extends InlineNode
         return new self($data['attrs']['url'] ?? null, $data['attrs']['data'] ?? null);
     }
 
+    public function getData(): ?string
+    {
+        return $this->data;
+    }
+
+    public function getUrl(): ?string
+    {
+        return $this->url;
+    }
+
     protected function attrs(): array
     {
         $attrs = parent::attrs();

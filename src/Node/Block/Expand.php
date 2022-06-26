@@ -76,6 +76,11 @@ class Expand extends BlockNode implements JsonSerializable
         return $node;
     }
 
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
     protected function attrs(): array
     {
         $attrs = parent::attrs();

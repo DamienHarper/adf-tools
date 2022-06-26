@@ -72,6 +72,16 @@ class MediaSingle extends BlockNode implements JsonSerializable
         return $node;
     }
 
+    public function getLayout(): string
+    {
+        return $this->layout;
+    }
+
+    public function getWidth(): ?int
+    {
+        return $this->width;
+    }
+
     protected function attrs(): array
     {
         $attrs = parent::attrs();

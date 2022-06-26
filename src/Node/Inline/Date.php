@@ -26,6 +26,11 @@ class Date extends InlineNode
         return new self($data['attrs']['timestamp']);
     }
 
+    public function getTimestamp(): string
+    {
+        return $this->timestamp;
+    }
+
     protected function attrs(): array
     {
         return [

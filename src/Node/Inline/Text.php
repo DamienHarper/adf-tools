@@ -15,6 +15,7 @@ class Text extends InlineNode
 {
     protected string $type = 'text';
     private string $text;
+    private array $marks = [];
 
     public function __construct(string $text, MarkNode ...$marks)
     {
@@ -28,9 +29,17 @@ class Text extends InlineNode
     public function jsonSerialize(): array
     {
         $result = parent::jsonSerialize();
+        if ($this->marks) {
+            $result['marks'] = $this->marks;
+        }
         $result['text'] = $this->text;
 
         return $result;
+    }
+
+    public function getMarks(): array
+    {
+        return $this->marks;
     }
 
     public static function load(array $data): self
@@ -48,5 +57,15 @@ class Text extends InlineNode
         }
 
         return new self($data['text'], ...$args);
+    }
+
+    public function getText(): string
+    {
+        return $this->text;
+    }
+
+    protected function addMark(MarkNode $mark): void
+    {
+        $this->marks[] = $mark;
     }
 }

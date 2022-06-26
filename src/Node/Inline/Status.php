@@ -57,6 +57,26 @@ class Status extends InlineNode
         );
     }
 
+    public function getText(): string
+    {
+        return $this->text;
+    }
+
+    public function getColor(): string
+    {
+        return $this->color;
+    }
+
+    public function getLocalId(): ?string
+    {
+        return $this->localId;
+    }
+
+    public function getStyle(): ?string
+    {
+        return $this->style;
+    }
+
     protected function attrs(): array
     {
         $attrs = parent::attrs();

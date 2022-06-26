@@ -27,6 +27,11 @@ class TextColor extends MarkNode
         return new self($data['attrs']['color'] ?? 'black');
     }
 
+    public function getColor(): string
+    {
+        return $this->color;
+    }
+
     protected function attrs(): array
     {
         return [
