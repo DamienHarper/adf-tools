@@ -12,11 +12,12 @@
 
 Atlassian Document Format PHP Tools
 
-The purpose of `adf-tools` is to provide an easy way to build and parse documents using Atlassian Document Format.
+The purpose of `adf-tools` is to provide an easy way to build, parse and export documents based on Atlassian Document Format.
 
-
-## Official Documentation
-`adf-tools` official documentation can be found [here]().
+## Documentation
+- Documentation of this library can be found [here](doc/index.md).
+- [Official Atlassian Document Format](https://developer.atlassian.com/cloud/jira/platform/apis/document/structure/)
+- [Atlassian Document Format JSON Schema](https://unpkg.com/@atlaskit/adf-schema@24.0.0/dist/json-schema/v1/full.json)
 
 
 ## Version Information
@@ -24,7 +25,7 @@ The purpose of `adf-tools` is to provide an easy way to build and parse document
 |:--------|:----------------------------|:-------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1.x     | Active development :rocket: | PHP >= 7.4   | [![adf-tools 1.x CI](https://github.com/DamienHarper/adf-tools/actions/workflows/ci-1.x.yml/badge.svg)](https://github.com/DamienHarper/adf-tools/actions/workflows/ci-1.x.yml) <br/>[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/DamienHarper/adf-tools/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/DamienHarper/adf-tools/?branch=main) <br/>[![codecov](https://codecov.io/gh/DamienHarper/adf-tools/branch/main/graph/badge.svg)](https://app.codecov.io/gh/DamienHarper/adf-tools/branch/main) |
 
-Changelog is available [here]()
+Changelog is available [here](https://github.com/DamienHarper/adf-tools/releases)
 
 
 ## Contributing
@@ -32,7 +33,7 @@ Changelog is available [here]()
 Send us your ideas, code reviews, pull requests and feature requests to help us improve this project.
 
 Do not forget to provide unit tests when contributing to this project.
-To do so, follow instructions in this dedicated [README](tests/README.md)
+To do so, follow instructions in this dedicated [README](doc/contributing.md)
 
 
 ## Credits
