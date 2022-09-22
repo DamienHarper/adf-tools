@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace DH\Adf\Node\Block;
 
+use DH\Adf\Builder\BulletListBuilder;
+use DH\Adf\Builder\HeadingBuilder;
+use DH\Adf\Builder\OrderedListBuilder;
 use DH\Adf\Builder\ParagraphBuilder;
 use DH\Adf\Node\BlockNode;
 use DH\Adf\Node\Node;
@@ -14,6 +17,9 @@ use InvalidArgumentException;
  */
 class Panel extends BlockNode
 {
+    use BulletListBuilder;
+    use HeadingBuilder;
+    use OrderedListBuilder;
     use ParagraphBuilder;
 
     public const INFO = 'info';

@@ -9,6 +9,7 @@ use DH\Adf\Builder\BulletListBuilder;
 use DH\Adf\Builder\CodeblockBuilder;
 use DH\Adf\Builder\HeadingBuilder;
 use DH\Adf\Builder\MediaGroupBuilder;
+use DH\Adf\Builder\MediaSingleBuilder;
 use DH\Adf\Builder\OrderedListBuilder;
 use DH\Adf\Builder\PanelBuilder;
 use DH\Adf\Builder\ParagraphBuilder;
@@ -18,6 +19,7 @@ use DH\Adf\Node\Block\BulletList;
 use DH\Adf\Node\Block\CodeBlock;
 use DH\Adf\Node\Block\Heading;
 use DH\Adf\Node\Block\MediaGroup;
+use DH\Adf\Node\Block\MediaSingle;
 use DH\Adf\Node\Block\OrderedList;
 use DH\Adf\Node\Block\Panel;
 use DH\Adf\Node\Block\Paragraph;
@@ -37,6 +39,7 @@ class TableCell extends BlockNode implements JsonSerializable
     use CodeblockBuilder;
     use HeadingBuilder;
     use MediaGroupBuilder;
+    use MediaSingleBuilder;
     use OrderedListBuilder;
     use PanelBuilder;
     use ParagraphBuilder;
@@ -49,6 +52,7 @@ class TableCell extends BlockNode implements JsonSerializable
         CodeBlock::class,
         Heading::class,
         MediaGroup::class,
+        MediaSingle::class,
         OrderedList::class,
         Panel::class,
         Paragraph::class,
