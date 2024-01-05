@@ -30,7 +30,7 @@ trait InlineNodeBuilder
     public function break(?Node $parent = null): self
     {
         $this->append(new Hardbreak($parent));
-        
+
         return $this;
     }
 
