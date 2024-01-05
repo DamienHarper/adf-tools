@@ -14,6 +14,6 @@ class MediaExporter extends HtmlExporter
         parent::__construct($node);
         // TODO: finalize HTML construct/support other types of media, only IMG supported as of now
         $this->tags = ['<div class="adf-media"><!--'.$this->node->toJson().'--><p>Atlassian Media API is not publicly available at the moment.</p>', '</div>'];
-//        $this->tags = ['<div class="adf-media"><!-- '.$this->node->toJson().' --><img src="blob:https://odandb.atlassian.net/'.$this->node->getId().'">', '</div>'];
+        //        $this->tags = ['<div class="adf-media"><!-- '.$this->node->toJson().' --><img src="blob:https://odandb.atlassian.net/'.$this->node->getId().'">', '</div>'];
     }
 }

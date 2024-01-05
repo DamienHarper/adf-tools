@@ -130,7 +130,7 @@ class TableCell extends BlockNode implements JsonSerializable
         if (null !== $this->rowspan) {
             $attrs['rowspan'] = $this->rowspan;
         }
-        if (null !== $this->colwidth && \is_array($this->colwidth)) {
+        if (\is_array($this->colwidth)) {
             $attrs['colwidth'] = $this->colwidth;
         }
 
