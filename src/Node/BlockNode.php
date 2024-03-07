@@ -37,6 +37,11 @@ abstract class BlockNode extends Node
         // set content if defined
         if (\array_key_exists('content', $data)) {
             foreach ($data['content'] as $nodeData) {
+                // ignore undefined node types
+                if (!isset(Node::NODE_MAPPING[$nodeData['type']])) {
+                    continue;
+                }
+
                 $class = Node::NODE_MAPPING[$nodeData['type']];
                 $child = $class::load($nodeData, $node);
 
