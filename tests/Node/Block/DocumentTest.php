@@ -713,4 +713,18 @@ TXT;
 
         self::assertJsonStringEqualsJsonString($json, $doc->toJson());
     }
+
+    public function testLoadWithUnknownNodeType(): void
+    {
+        $json = <<<'TXT'
+{"version":1,"type":"doc","content":[{"type":"paragraph","content":[{"type":"text","text":"hello"},{"type":"unknown","attrs":{"id":"abc"}},{"type":"text","text":" "},{"type":"text","text":"world"}]}]}
+TXT;
+        $data = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
+        $doc = Document::load($data);
+
+        $expectedOutput = <<<'TXT'
+{"version":1,"type":"doc","content":[{"type":"paragraph","content":[{"type":"text","text":"hello"},{"type":"text","text":" "},{"type":"text","text":"world"}]}]}
+TXT;
+        self::assertJsonStringEqualsJsonString($expectedOutput, $doc->toJson());
+    }
 }
