@@ -47,10 +47,9 @@ class Table extends BlockNode
 
     public static function load(array $data, ?BlockNode $parent = null): self
     {
-        self::checkNodeData(static::class, $data, ['attrs']);
-        self::checkRequiredKeys(['layout', 'isNumberColumnEnabled'], $data['attrs']);
+        self::checkNodeData(static::class, $data);
 
-        $node = new self($data['attrs']['layout'], (bool) $data['attrs']['isNumberColumnEnabled'], $data['attrs']['localId'] ?? null, $parent);
+        $node = new self($data['attrs']['layout'] ?? self::LAYOUT_DEFAULT, (bool) $data['attrs']['isNumberColumnEnabled'] ?? false, $data['attrs']['localId'] ?? null, $parent);
 
         // set content if defined
         if (\array_key_exists('content', $data)) {
