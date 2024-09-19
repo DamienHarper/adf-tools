@@ -21,10 +21,11 @@ class Media extends Node
     private string $mediaType;
     private string $collection;
     private ?string $occurrenceKey;
+    private ?string $alt;
     private ?int $width;
     private ?int $height;
 
-    public function __construct(string $id, string $mediaType, string $collection, ?int $width = null, ?int $height = null, ?string $occurrenceKey = null, ?BlockNode $parent = null)
+    public function __construct(string $id, string $mediaType, string $collection, ?int $width = null, ?int $height = null, ?string $occurrenceKey = null, ?BlockNode $parent = null, ?string $alt = null)
     {
         if (!\in_array($mediaType, [self::TYPE_FILE, self::TYPE_LINK], true)) {
             throw new InvalidArgumentException('Invalid media type');
@@ -37,6 +38,7 @@ class Media extends Node
         $this->occurrenceKey = $occurrenceKey;
         $this->width = $width;
         $this->height = $height;
+        $this->alt = $alt;
     }
 
     public static function load(array $data, ?BlockNode $parent = null): self
@@ -51,7 +53,8 @@ class Media extends Node
             $data['attrs']['width'] ?? null,
             $data['attrs']['height'] ?? null,
             $data['attrs']['occurrenceKey'] ?? null,
-            $parent
+            $parent,
+            $data['attrs']['alt'] ?? null
         );
     }
 
@@ -85,6 +88,11 @@ class Media extends Node
         return $this->height;
     }
 
+    public function getAlt(): ?int
+    {
+        return $this->alt;
+    }
+
     protected function attrs(): array
     {
         $attrs = parent::attrs();
@@ -103,6 +111,10 @@ class Media extends Node
 
         if (null !== $this->height) {
             $attrs['height'] = $this->height;
+        }
+
+        if (null !== $this->alt) {
+            $attrs['alt'] = $this->alt;
         }
 
         return $attrs;
