@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace DH\Adf\Builder;
 
+use DH\Adf\Node\BlockNode;
 use DH\Adf\Node\Node;
 
 trait BuilderInterface
 {
-    abstract protected function append(Node $node): void;
+    abstract public function append(Node ...$nodes): BlockNode;
 }

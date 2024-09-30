@@ -52,16 +52,29 @@ abstract class BlockNode extends Node
         return $this->content;
     }
 
-    protected function append(Node $node): void
+    public function append(Node ...$nodes): BlockNode
     {
-        foreach ($this->allowedContentTypes as $type) {
-            if ($node instanceof $type) {
+        foreach ($nodes as $node) {
+            if ($this->isAppendAllowed($node)) {
                 $this->content[] = $node;
-
-                return;
+            } else {
+                throw new InvalidArgumentException(
+                    sprintf('Invalid content type "%s" for block node "%s".', $node->getType(), $this->getType())
+                );
             }
         }
 
-        throw new InvalidArgumentException(\sprintf('Invalid content type "%s" for block node "%s".', $node->type, $this->type));
+        return $this;
+    }
+
+    protected function isAppendAllowed(Node $node): bool
+    {
+        foreach ($this->allowedContentTypes as $allowedContentType) {
+            if ($node instanceof $allowedContentType) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
