@@ -6,6 +6,7 @@ Methods:
 - `Document::bulletlist()` appends a [bulletList](https://developer.atlassian.com/cloud/jira/platform/apis/document/nodes/bulletList/) block node
 - `Document::codeblock()` appends a [codeBlock](https://developer.atlassian.com/cloud/jira/platform/apis/document/nodes/codeBlock/) block node
 - `Document::expand()` appends a [expand]() node
+- `Document::extension()` appends an `extension` node
 - `Document::heading()` appends a [heading](https://developer.atlassian.com/cloud/jira/platform/apis/document/nodes/heading/) block node
 - `Document::mediaGroup()` appends a [mediaGroup](https://developer.atlassian.com/cloud/jira/platform/apis/document/nodes/mediaGroup/) block node
 - `Document::mediaSingle()` appends a [mediaSingle](https://developer.atlassian.com/cloud/jira/platform/apis/document/nodes/mediaSingle/) block node
@@ -120,6 +121,7 @@ Methods:
 ## `DH\Adf\Node\Block\Paragraph` class materializes a [paragraph](https://developer.atlassian.com/cloud/jira/platform/apis/document/nodes/paragraph/) block node
 Methods:
 - `Paragraph::bulletlist()` appends a [bulletList](https://developer.atlassian.com/cloud/jira/platform/apis/document/nodes/bulletList/) block node
+- `Document::extension()` appends an `extension` node
 - `Paragraph::heading()` appends a [heading](https://developer.atlassian.com/cloud/jira/platform/apis/document/nodes/heading/) block node
 - `Paragraph::orderedlist()` appends a [orderedList](https://developer.atlassian.com/cloud/jira/platform/apis/document/nodes/orderedList/) block node
 - `Paragraph::paragraph()` appends a [paragraph](https://developer.atlassian.com/cloud/jira/platform/apis/document/nodes/paragraph/) block node
