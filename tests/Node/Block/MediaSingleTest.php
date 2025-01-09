@@ -48,4 +48,19 @@ final class MediaSingleTest extends TestCase
             ],
         ]));
     }
+
+    public function testWidthWithFloatValue(): void
+    {
+        $json = [
+            'type' => 'mediaSingle',
+            'content' => [],
+            'attrs' => [
+                'layout' => 'wrap-left',
+                'width' => 80.5,
+            ],
+        ];
+
+        $doc = MediaSingle::load($json);
+        $this->assertInstanceOf(MediaSingle::class, $doc);
+    }
 }

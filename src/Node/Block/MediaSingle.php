@@ -57,7 +57,11 @@ class MediaSingle extends BlockNode implements JsonSerializable
         self::checkNodeData(static::class, $data, ['attrs']);
         self::checkRequiredKeys(['layout'], $data['attrs']);
 
-        $node = new self($data['attrs']['layout'], $data['attrs']['width'] ?? null, $parent);
+        $node = new self(
+            $data['attrs']['layout'],
+            isset($data['attrs']['width']) ? (int) $data['attrs']['width'] : null,
+            $parent
+        );
 
         // set content if defined
         if (\array_key_exists('content', $data)) {
