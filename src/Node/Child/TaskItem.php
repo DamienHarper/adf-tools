@@ -24,6 +24,7 @@ class TaskItem extends BlockNode implements JsonSerializable
 
     /** @var bool State of Task Item */
     private bool $todo;
+    private ?string $localId;
 
     public function __construct(bool $todo, ?BlockNode $parent = null)
     {
@@ -39,6 +40,7 @@ class TaskItem extends BlockNode implements JsonSerializable
         $todo = $data['attrs']['state'] == 'TODO';
         $node = new self($todo, $parent);
 
+        $node->localId = $data['attrs']['localId'] ?? null;
         // set content if defined
         if (\array_key_exists('content', $data)) {
             foreach ($data['content'] as $nodeData) {
@@ -55,5 +57,10 @@ class TaskItem extends BlockNode implements JsonSerializable
     public function isOpen(): bool
     {
         return $this->todo;
+    }
+
+    public function getLocalId(): ?string
+    {
+        return $this->localId;
     }
 }
