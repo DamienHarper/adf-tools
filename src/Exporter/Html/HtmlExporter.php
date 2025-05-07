@@ -18,11 +18,13 @@ use DH\Adf\Exporter\Html\Block\PanelExporter;
 use DH\Adf\Exporter\Html\Block\ParagraphExporter;
 use DH\Adf\Exporter\Html\Block\RuleExporter;
 use DH\Adf\Exporter\Html\Block\TableExporter;
+use DH\Adf\Exporter\Html\Block\TaskListExporter;
 use DH\Adf\Exporter\Html\Child\ListItemExporter;
 use DH\Adf\Exporter\Html\Child\MediaExporter;
 use DH\Adf\Exporter\Html\Child\TableCellExporter;
 use DH\Adf\Exporter\Html\Child\TableHeaderExporter;
 use DH\Adf\Exporter\Html\Child\TableRowExporter;
+use DH\Adf\Exporter\Html\Child\TaskItemExporter;
 use DH\Adf\Exporter\Html\Inline\DateExporter;
 use DH\Adf\Exporter\Html\Inline\EmojiExporter;
 use DH\Adf\Exporter\Html\Inline\HardbreakExporter;
@@ -51,12 +53,14 @@ use DH\Adf\Node\Block\Panel;
 use DH\Adf\Node\Block\Paragraph;
 use DH\Adf\Node\Block\Rule;
 use DH\Adf\Node\Block\Table;
+use DH\Adf\Node\Block\TaskList;
 use DH\Adf\Node\BlockNode;
 use DH\Adf\Node\Child\ListItem;
 use DH\Adf\Node\Child\Media;
 use DH\Adf\Node\Child\TableCell;
 use DH\Adf\Node\Child\TableHeader;
 use DH\Adf\Node\Child\TableRow;
+use DH\Adf\Node\Child\TaskItem;
 use DH\Adf\Node\Inline\Date;
 use DH\Adf\Node\Inline\Emoji;
 use DH\Adf\Node\Inline\Hardbreak;
@@ -82,6 +86,7 @@ abstract class HtmlExporter implements ExporterInterface
         Document::class => DocumentExporter::class,
         Blockquote::class => BlockquoteExporter::class,
         BulletList::class => BulletListExporter::class,
+        TaskList::class => TaskListExporter::class,
         CodeBlock::class => CodeBlockExporter::class,
         Heading::class => HeadingExporter::class,
         MediaGroup::class => MediaGroupExporter::class,
@@ -95,6 +100,7 @@ abstract class HtmlExporter implements ExporterInterface
 
         // child nodes
         ListItem::class => ListItemExporter::class,
+        TaskItem::class => TaskItemExporter::class,
         TableCell::class => TableCellExporter::class,
         TableHeader::class => TableHeaderExporter::class,
         TableRow::class => TableRowExporter::class,
