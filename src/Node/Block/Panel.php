@@ -8,6 +8,7 @@ use DH\Adf\Builder\BulletListBuilder;
 use DH\Adf\Builder\HeadingBuilder;
 use DH\Adf\Builder\OrderedListBuilder;
 use DH\Adf\Builder\ParagraphBuilder;
+use DH\Adf\Builder\TaskListBuilder;
 use DH\Adf\Node\BlockNode;
 use DH\Adf\Node\Node;
 use InvalidArgumentException;
@@ -21,6 +22,7 @@ class Panel extends BlockNode
     use HeadingBuilder;
     use OrderedListBuilder;
     use ParagraphBuilder;
+    use TaskListBuilder;
 
     public const INFO = 'info';
     public const NOTE = 'note';
@@ -34,6 +36,7 @@ class Panel extends BlockNode
         Heading::class,
         OrderedList::class,
         Paragraph::class,
+        TaskList::class,
     ];
     private string $panelType;
 

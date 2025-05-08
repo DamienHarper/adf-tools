@@ -14,6 +14,7 @@ use DH\Adf\Builder\OrderedListBuilder;
 use DH\Adf\Builder\PanelBuilder;
 use DH\Adf\Builder\ParagraphBuilder;
 use DH\Adf\Builder\RuleBuilder;
+use DH\Adf\Builder\TaskListBuilder;
 use DH\Adf\Node\Block\Blockquote;
 use DH\Adf\Node\Block\BulletList;
 use DH\Adf\Node\Block\CodeBlock;
@@ -25,6 +26,7 @@ use DH\Adf\Node\Block\Panel;
 use DH\Adf\Node\Block\Paragraph;
 use DH\Adf\Node\Block\Rule;
 use DH\Adf\Node\Block\Table;
+use DH\Adf\Node\Block\TaskList;
 use DH\Adf\Node\BlockNode;
 use DH\Adf\Node\Node;
 use JsonSerializable;
@@ -44,6 +46,7 @@ class TableCell extends BlockNode implements JsonSerializable
     use PanelBuilder;
     use ParagraphBuilder;
     use RuleBuilder;
+    use TaskListBuilder;
 
     protected string $type = 'tableCell';
     protected array $allowedContentTypes = [
@@ -57,6 +60,7 @@ class TableCell extends BlockNode implements JsonSerializable
         Panel::class,
         Paragraph::class,
         Rule::class,
+        TaskList::class,
     ];
     private ?string $background;
     private ?int $colspan;
