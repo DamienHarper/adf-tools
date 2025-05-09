@@ -17,9 +17,8 @@ class Table extends BlockNode
 {
     use TableRowBuilder;
 
-    public const LAYOUT_DEFAULT = 'default';
-    public const LAYOUT_FULL_WIDTH = 'full-width';
-    public const LAYOUT_WIDE = 'wide';
+    public const LAYOUT_START = 'align-start';
+    public const LAYOUT_CENTER = 'center';
 
     protected string $type = 'table';
     protected array $allowedContentTypes = [
@@ -28,13 +27,13 @@ class Table extends BlockNode
     private string $layout = 'default';
     private bool $isNumberColumnEnabled = false;
     private ?string $localId;
+    private ?int $width = null;
 
-    public function __construct(string $layout = 'default', bool $isNumberColumnEnabled = false, ?string $localId = null, ?BlockNode $parent = null)
+    public function __construct(string $layout = 'align-start', bool $isNumberColumnEnabled = false, ?int $width = null, ?string $localId = null, ?BlockNode $parent = null)
     {
         if (!\in_array($layout, [
-            self::LAYOUT_DEFAULT,
-            self::LAYOUT_FULL_WIDTH,
-            self::LAYOUT_WIDE,
+            self::LAYOUT_START,
+            self::LAYOUT_CENTER,
         ], true)) {
             throw new InvalidArgumentException(sprintf('Invalid layout "%s"', $layout));
         }
@@ -43,6 +42,10 @@ class Table extends BlockNode
         $this->layout = $layout;
         $this->isNumberColumnEnabled = $isNumberColumnEnabled;
         $this->localId = $localId;
+
+        if ($width !== null)
+            $width = abs($width);
+        $this->width = $width;
     }
 
     public static function load(array $data, ?BlockNode $parent = null): self
@@ -50,7 +53,7 @@ class Table extends BlockNode
         self::checkNodeData(static::class, $data, ['attrs']);
         self::checkRequiredKeys(['layout', 'isNumberColumnEnabled'], $data['attrs']);
 
-        $node = new self($data['attrs']['layout'], (bool) $data['attrs']['isNumberColumnEnabled'], $data['attrs']['localId'] ?? null, $parent);
+        $node = new self($data['attrs']['layout'], (bool) $data['attrs']['isNumberColumnEnabled'], $data['attrs']['width'] ?? null, $data['attrs']['localId'] ?? null, $parent);
 
         // set content if defined
         if (\array_key_exists('content', $data)) {
@@ -88,6 +91,10 @@ class Table extends BlockNode
 
         if (null !== $this->localId) {
             $attrs['localId'] = $this->localId;
+        }
+
+        if (null !== $this->width) {
+            $attrs['width'] = $this->width;
         }
 
         return $attrs;

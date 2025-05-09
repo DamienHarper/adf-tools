@@ -24,13 +24,13 @@ final class TableTest extends TestCase
 
     public function testEmptyTable(): void
     {
-        $doc = json_encode(new Table(Table::LAYOUT_DEFAULT));
+        $doc = json_encode(new Table(Table::LAYOUT_CENTER));
 
         self::assertJsonStringEqualsJsonString($doc, json_encode([
             'type' => 'table',
             'content' => [],
             'attrs' => [
-                'layout' => 'default',
+                'layout' => 'center',
                 'isNumberColumnEnabled' => false,
             ],
         ]));
@@ -38,13 +38,13 @@ final class TableTest extends TestCase
 
     public function testEmptyTableWithNumberedRows(): void
     {
-        $doc = json_encode(new Table(Table::LAYOUT_DEFAULT, true));
+        $doc = json_encode(new Table(Table::LAYOUT_START, true));
 
         self::assertJsonStringEqualsJsonString($doc, json_encode([
             'type' => 'table',
             'content' => [],
             'attrs' => [
-                'layout' => 'default',
+                'layout' => 'align-start',
                 'isNumberColumnEnabled' => true,
             ],
         ]));
