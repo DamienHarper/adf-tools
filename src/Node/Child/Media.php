@@ -21,10 +21,10 @@ class Media extends Node
     private string $mediaType;
     private string $collection;
     private ?string $occurrenceKey;
-    private ?int $width;
-    private ?int $height;
+    private ?float $width;
+    private ?float $height;
 
-    public function __construct(string $id, string $mediaType, string $collection, ?int $width = null, ?int $height = null, ?string $occurrenceKey = null, ?BlockNode $parent = null)
+    public function __construct(string $id, string $mediaType, string $collection, ?float $width = null, ?float $height = null, ?string $occurrenceKey = null, ?BlockNode $parent = null)
     {
         if (!\in_array($mediaType, [self::TYPE_FILE, self::TYPE_LINK], true)) {
             throw new InvalidArgumentException('Invalid media type');
@@ -35,7 +35,13 @@ class Media extends Node
         $this->mediaType = $mediaType;
         $this->collection = $collection;
         $this->occurrenceKey = $occurrenceKey;
+
+        if (is_float($width))
+            $width = round($width, 2);
         $this->width = $width;
+
+        if (is_float($height))
+            $height = round($height, 2);
         $this->height = $height;
     }
 
@@ -75,12 +81,12 @@ class Media extends Node
         return $this->occurrenceKey;
     }
 
-    public function getWidth(): ?int
+    public function getWidth(): ?float
     {
         return $this->width;
     }
 
-    public function getHeight(): ?int
+    public function getHeight(): ?float
     {
         return $this->height;
     }

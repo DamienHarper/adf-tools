@@ -10,7 +10,7 @@ trait MediaSingleBuilder
 {
     use BuilderInterface;
 
-    public function mediaSingle(string $layout, ?int $width = null): MediaSingle
+    public function mediaSingle(string $layout, ?float $width = null): MediaSingle
     {
         $block = new MediaSingle($layout, $width, $this);
         $this->append($block);
