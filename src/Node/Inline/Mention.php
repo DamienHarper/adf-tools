@@ -58,11 +58,11 @@ class Mention extends InlineNode
     public static function load(array $data, ?BlockNode $parent = null): self
     {
         self::checkNodeData(static::class, $data);
-        self::checkRequiredKeys(['id', 'text'], $data['attrs']);
+        self::checkRequiredKeys(['id'], $data['attrs']);
 
         return new self(
             $data['attrs']['id'],
-            $data['attrs']['text'],
+            $data['attrs']['text'] ?? '',
             $data['attrs']['accessLevel'] ?? null,
             $data['attrs']['userType'] ?? null
         );
