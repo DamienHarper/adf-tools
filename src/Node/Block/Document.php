@@ -16,6 +16,7 @@ use DH\Adf\Builder\PanelBuilder;
 use DH\Adf\Builder\ParagraphBuilder;
 use DH\Adf\Builder\RuleBuilder;
 use DH\Adf\Builder\TableBuilder;
+use DH\Adf\Builder\TaskListBuilder;
 use DH\Adf\Node\BlockNode;
 use JsonSerializable;
 
@@ -26,6 +27,7 @@ class Document extends BlockNode implements JsonSerializable
 {
     use BlockquoteBuilder;
     use BulletListBuilder;
+    use TaskListBuilder;
     use CodeblockBuilder;
     use HeadingBuilder;
     use MediaGroupBuilder;
@@ -41,6 +43,7 @@ class Document extends BlockNode implements JsonSerializable
     protected array $allowedContentTypes = [
         Blockquote::class,
         BulletList::class,
+        TaskList::class,
         CodeBlock::class,
         Heading::class,
         MediaGroup::class,

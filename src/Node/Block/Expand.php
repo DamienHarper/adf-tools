@@ -15,6 +15,7 @@ use DH\Adf\Builder\PanelBuilder;
 use DH\Adf\Builder\ParagraphBuilder;
 use DH\Adf\Builder\RuleBuilder;
 use DH\Adf\Builder\TableBuilder;
+use DH\Adf\Builder\TaskListBuilder;
 use DH\Adf\Node\BlockNode;
 use DH\Adf\Node\Node;
 use JsonSerializable;
@@ -32,6 +33,7 @@ class Expand extends BlockNode implements JsonSerializable
     use ParagraphBuilder;
     use RuleBuilder;
     use TableBuilder;
+    use TaskListBuilder;
 
     protected string $type = 'expand';
     protected array $allowedContentTypes = [
@@ -46,6 +48,7 @@ class Expand extends BlockNode implements JsonSerializable
         Paragraph::class,
         Rule::class,
         Table::class,
+        TaskList::class,
     ];
 
     private ?string $title;
