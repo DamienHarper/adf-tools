@@ -300,10 +300,11 @@ final class DocumentExporterTest extends TestCase
         self::assertSame('<div class="adf-container"><table class="adf-table adf-table-align-start"><tbody><tr><th><p>header 1</p></th><th><p>header 2</p></th></tr><tr><td><p>cell 1</p></td><td><p>cell 2</p></td></tr></tbody></table></div>', $exporter->export());
     }
 
-    public function testDocumentWithExtension()
+    public function testDocumentWithExtension(): void
     {
         $document = (new Document())
-            ->extension('default',
+            ->extension(
+                'default',
                 'com.atlassian.confluence.macro.core',
                 'toc',
                 [],

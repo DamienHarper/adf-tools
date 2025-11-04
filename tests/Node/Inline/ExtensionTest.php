@@ -47,28 +47,28 @@ final class ExtensionTest extends TestCase
         self::assertJsonStringEqualsJsonString($doc, json_encode([
             'type' => 'extension',
             'attrs' => [
-                "extensionKey" => "toc",
-                "extensionType" => "com.atlassian.confluence.macro.core",
-                "layout" => "default",
-                "localId" => "123cad9c-95d8-49df-8b99-00886ba0af5d",
-                "parameters" => [
-                    "macroParams" => [
-                        "maxLevel" => [
-                            "value" => "3"
+                'extensionKey' => 'toc',
+                'extensionType' => 'com.atlassian.confluence.macro.core',
+                'layout' => 'default',
+                'localId' => '123cad9c-95d8-49df-8b99-00886ba0af5d',
+                'parameters' => [
+                    'macroParams' => [
+                        'maxLevel' => [
+                            'value' => '3',
                         ],
-                        "minLevel" => [
-                            "value" => "1"
+                        'minLevel' => [
+                            'value' => '1',
                         ],
-                        "outline" => [
-                            "value" => "false"
+                        'outline' => [
+                            'value' => 'false',
                         ],
-                        "printable" => [
-                            "value" => "false"
+                        'printable' => [
+                            'value' => 'false',
                         ],
-                        "type" => [
-                            "value" => "list"
-                        ]
-                    ]
+                        'type' => [
+                            'value' => 'list',
+                        ],
+                    ],
                 ],
             ],
         ]));
@@ -84,7 +84,8 @@ final class ExtensionTest extends TestCase
                 [],
                 '123cad9c-95d8-49df-8b99-00886ba0af5d',
             )
-            ->toJson();
+            ->toJson()
+        ;
 
         self::assertJsonStringEqualsJsonString($doc, json_encode([
             'version' => 1,
@@ -93,10 +94,10 @@ final class ExtensionTest extends TestCase
                 [
                     'type' => 'extension',
                     'attrs' => [
-                        "extensionKey" => "toc",
-                        "extensionType" => "com.atlassian.confluence.macro.core",
-                        "layout" => "default",
-                        "localId" => "123cad9c-95d8-49df-8b99-00886ba0af5d"
+                        'extensionKey' => 'toc',
+                        'extensionType' => 'com.atlassian.confluence.macro.core',
+                        'layout' => 'default',
+                        'localId' => '123cad9c-95d8-49df-8b99-00886ba0af5d',
                     ],
                 ],
             ],
