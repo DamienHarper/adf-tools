@@ -268,7 +268,7 @@ final class DocumentExporterTest extends TestCase
     public function testDocumentWithTable(): void
     {
         $document = (new Document())
-            ->table(Table::LAYOUT_DEFAULT)
+            ->table(Table::LAYOUT_START)
             ->row()
             ->header()
             ->paragraph()
@@ -297,7 +297,7 @@ final class DocumentExporterTest extends TestCase
         ;
         $exporter = new DocumentExporter($document);
 
-        self::assertSame('<div class="adf-container"><table class="adf-table-default"><tbody><tr><th><p>header 1</p></th><th><p>header 2</p></th></tr><tr><td><p>cell 1</p></td><td><p>cell 2</p></td></tr></tbody></table></div>', $exporter->export());
+        self::assertSame('<div class="adf-container"><table class="adf-table adf-table-align-start"><tbody><tr><th><p>header 1</p></th><th><p>header 2</p></th></tr><tr><td><p>cell 1</p></td><td><p>cell 2</p></td></tr></tbody></table></div>', $exporter->export());
     }
 
     public function testLoad(): void
