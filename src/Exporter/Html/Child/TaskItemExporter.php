@@ -15,7 +15,7 @@ class TaskItemExporter extends HtmlExporter
         parent::__construct($node);
         $this->tags = [
             '<li><label><input class="adf-task-checkbox" type="checkbox" disabled '.$fill.'>',
-            '</label></li>'
+            '</label></li>',
         ];
     }
 }

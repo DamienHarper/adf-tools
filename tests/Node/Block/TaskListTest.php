@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace DH\Adf\Tests\Node\Block;
 
 use DH\Adf\Node\Block\TaskList;
-use DH\Adf\Node\Child\TaskItem;
 use PHPUnit\Framework\TestCase;
 
 /**

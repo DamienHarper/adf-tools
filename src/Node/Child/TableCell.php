@@ -25,7 +25,6 @@ use DH\Adf\Node\Block\OrderedList;
 use DH\Adf\Node\Block\Panel;
 use DH\Adf\Node\Block\Paragraph;
 use DH\Adf\Node\Block\Rule;
-use DH\Adf\Node\Block\Table;
 use DH\Adf\Node\Block\TaskList;
 use DH\Adf\Node\BlockNode;
 use DH\Adf\Node\Node;

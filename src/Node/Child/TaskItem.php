@@ -37,7 +37,7 @@ class TaskItem extends BlockNode implements JsonSerializable
         self::checkNodeData(static::class, $data, ['attrs']);
         self::checkRequiredKeys(['state'], $data['attrs']); // task item needs state key
 
-        $todo = $data['attrs']['state'] == 'TODO';
+        $todo = 'TODO' === $data['attrs']['state'];
         $node = new self($todo, $parent);
 
         $node->localId = $data['attrs']['localId'] ?? null;

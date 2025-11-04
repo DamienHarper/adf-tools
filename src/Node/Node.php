@@ -129,7 +129,7 @@ abstract class Node implements JsonSerializable
         self::checkNodeData(static::class, $data);
 
         if (static::class !== self::NODE_MAPPING[$data['type']]) {
-            throw new InvalidArgumentException(sprintf('Invalid data for "%s" node type', $data['type']));
+            throw new InvalidArgumentException(\sprintf('Invalid data for "%s" node type', $data['type']));
         }
 
         $class = self::NODE_MAPPING[$data['type']];
@@ -154,7 +154,7 @@ abstract class Node implements JsonSerializable
     {
         foreach ($keys as $key) {
             if (!\array_key_exists($key, $data)) {
-                throw new InvalidArgumentException(sprintf('Missing "%s" key in node data.', $key));
+                throw new InvalidArgumentException(\sprintf('Missing "%s" key in node data.', $key));
             }
         }
     }
@@ -164,7 +164,7 @@ abstract class Node implements JsonSerializable
         self::checkRequiredKeys(array_merge(['type'], $keys), $data);
 
         if (static::class !== self::NODE_MAPPING[$data['type']]) {
-            throw new InvalidArgumentException(sprintf('Invalid data for "%s" node type', $data['type']));
+            throw new InvalidArgumentException(\sprintf('Invalid data for "%s" node type', $data['type']));
         }
     }
 }

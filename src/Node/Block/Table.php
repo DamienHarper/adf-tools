@@ -36,7 +36,7 @@ class Table extends BlockNode
             self::LAYOUT_FULL_WIDTH,
             self::LAYOUT_WIDE,
         ], true)) {
-            throw new InvalidArgumentException(sprintf('Invalid layout "%s"', $layout));
+            throw new InvalidArgumentException(\sprintf('Invalid layout "%s"', $layout));
         }
 
         parent::__construct($parent);

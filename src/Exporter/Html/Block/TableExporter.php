@@ -13,6 +13,6 @@ class TableExporter extends HtmlExporter
     {
         parent::__construct($node);
         // TODO: implement numbered rows
-        $this->tags = [sprintf('<table class="adf-table-%s"><tbody>', $node->getLayout()), '</tbody></table>'];
+        $this->tags = [\sprintf('<table class="adf-table-%s"><tbody>', $node->getLayout()), '</tbody></table>'];
     }
 }

@@ -62,6 +62,6 @@ abstract class BlockNode extends Node
             }
         }
 
-        throw new InvalidArgumentException(sprintf('Invalid content type "%s" for block node "%s".', $node->type, $this->type));
+        throw new InvalidArgumentException(\sprintf('Invalid content type "%s" for block node "%s".', $node->type, $this->type));
     }
 }

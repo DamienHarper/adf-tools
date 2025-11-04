@@ -22,6 +22,6 @@ class LinkExporter extends HtmlExporter
     {
         \assert($this->node instanceof Link);
 
-        return sprintf($this->tags[0], $this->node->getHref(), $this->node->getTitle()).$this->text.$this->tags[1];
+        return \sprintf($this->tags[0], $this->node->getHref(), $this->node->getTitle()).$this->text.$this->tags[1];
     }
 }

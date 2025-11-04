@@ -44,7 +44,7 @@ class MediaSingle extends BlockNode implements JsonSerializable
             self::LAYOUT_ALIGN_START,
             self::LAYOUT_ALIGN_END,
         ], true)) {
-            throw new InvalidArgumentException(sprintf('Invalid layout "%s"', $layout));
+            throw new InvalidArgumentException(\sprintf('Invalid layout "%s"', $layout));
         }
 
         parent::__construct($parent);
