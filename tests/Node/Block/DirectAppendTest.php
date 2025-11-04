@@ -23,7 +23,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @small
  */
-class DirectAppendTest extends TestCase
+final class DirectAppendTest extends TestCase
 {
     public function testDocumentWithEmptyParagraph(): void
     {
@@ -174,7 +174,7 @@ class DirectAppendTest extends TestCase
         ]));
     }
 
-    public function testIllegalAppend()
+    public function testIllegalAppend(): void
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid content type "panel" for block node "paragraph".');
