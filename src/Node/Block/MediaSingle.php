@@ -63,7 +63,7 @@ class MediaSingle extends BlockNode implements JsonSerializable
 
         $node = new self(
             $data['attrs']['layout'],
-            isset($data['attrs']['width']) ? (int) $data['attrs']['width'] : null,
+            isset($data['attrs']['width']) ? (float) $data['attrs']['width'] : null,
             $parent
         );
 

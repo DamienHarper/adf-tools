@@ -61,6 +61,6 @@ final class MediaSingleTest extends TestCase
         ];
 
         $doc = MediaSingle::load($json);
-        $this->assertInstanceOf(MediaSingle::class, $doc);
+        self::assertInstanceOf(MediaSingle::class, $doc);
     }
 }
