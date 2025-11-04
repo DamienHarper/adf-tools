@@ -10,7 +10,7 @@ trait MediaBuilder
 {
     use BuilderInterface;
 
-    public function media(string $id, string $mediaType, string $collection, ?int $width = null, ?int $height = null, ?string $occurrenceKey = null): Media
+    public function media(string $id, string $mediaType, string $collection, ?float $width = null, ?float $height = null, ?string $occurrenceKey = null): Media
     {
         $block = new Media($id, $mediaType, $collection, $width, $height, $occurrenceKey, $this);
         $this->append($block);

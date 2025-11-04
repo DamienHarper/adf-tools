@@ -211,28 +211,28 @@ final class DocumentExporterTest extends TestCase
     {
         $document = (new Document())
             ->mediaSingle(MediaSingle::LAYOUT_WIDE)
-            ->media('6e7c7f2c-dd7a-499c-bceb-6f32bfbf30b5', Media::TYPE_FILE, 'my project files', 100, 200)
+            ->media('6e7c7f2c-dd7a-499c-bceb-6f32bfbf30b5', Media::TYPE_FILE, 'my project files', 110.7, 200)
             ->end()
             ->end()
         ;
         $exporter = new DocumentExporter($document);
 
-        self::assertSame('<div class="adf-container"><div class="adf-mediasingle"><div class="adf-media"><!--{"type":"media","attrs":{"id":"6e7c7f2c-dd7a-499c-bceb-6f32bfbf30b5","type":"file","collection":"my project files","width":100,"height":200}}--><p>Atlassian Media API is not publicly available at the moment.</p></div></div></div>', $exporter->export());
+        self::assertSame('<div class="adf-container"><div class="adf-mediasingle"><div class="adf-media"><!--{"type":"media","attrs":{"id":"6e7c7f2c-dd7a-499c-bceb-6f32bfbf30b5","type":"file","collection":"my project files","width":110.7,"height":200}}--><p>Atlassian Media API is not publicly available at the moment.</p></div></div></div>', $exporter->export());
     }
 
     public function testDocumentWithMediaGroup(): void
     {
         $document = (new Document())
             ->mediaGroup()
-            ->media('6e7c7f2c-dd7a-499c-bceb-6f32bfbf30b5', Media::TYPE_FILE, 'my project files', 100, 200)
+            ->media('6e7c7f2c-dd7a-499c-bceb-6f32bfbf30b5', Media::TYPE_FILE, 'my project files', 100.335, 200)
             ->end()
-            ->media('7a7c7f2c-dd7a-499c-bceb-6f32bfbf30c7', Media::TYPE_FILE, 'my project files', 100, 200)
+            ->media('7a7c7f2c-dd7a-499c-bceb-6f32bfbf30c7', Media::TYPE_FILE, 'my project files', 100, 220.5)
             ->end()
             ->end()
         ;
         $exporter = new DocumentExporter($document);
 
-        self::assertSame('<div class="adf-container"><div class="adf-mediagroup"><div class="adf-media"><!--{"type":"media","attrs":{"id":"6e7c7f2c-dd7a-499c-bceb-6f32bfbf30b5","type":"file","collection":"my project files","width":100,"height":200}}--><p>Atlassian Media API is not publicly available at the moment.</p></div><div class="adf-media"><!--{"type":"media","attrs":{"id":"7a7c7f2c-dd7a-499c-bceb-6f32bfbf30c7","type":"file","collection":"my project files","width":100,"height":200}}--><p>Atlassian Media API is not publicly available at the moment.</p></div></div></div>', $exporter->export());
+        self::assertSame('<div class="adf-container"><div class="adf-mediagroup"><div class="adf-media"><!--{"type":"media","attrs":{"id":"6e7c7f2c-dd7a-499c-bceb-6f32bfbf30b5","type":"file","collection":"my project files","width":100.34,"height":200}}--><p>Atlassian Media API is not publicly available at the moment.</p></div><div class="adf-media"><!--{"type":"media","attrs":{"id":"7a7c7f2c-dd7a-499c-bceb-6f32bfbf30c7","type":"file","collection":"my project files","width":100,"height":220.5}}--><p>Atlassian Media API is not publicly available at the moment.</p></div></div></div>', $exporter->export());
     }
 
     public function testDocumentWithTable(): void
