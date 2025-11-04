@@ -264,6 +264,25 @@ $exporter = new DocumentExporter($document);
 $html = $exporter->export();
 ```
 
+#### Media Export
+
+- converting media (attachments) to HTML is currently not supported
+  - (will display as `Atlassian Media API is not publicly available at the moment.`)
+  - you can fetch attachments via the Rest API separately ([GET Attachment](https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-issue-attachments/#api-rest-api-3-attachment-content-id-get) or with the `attachment` key when [getting](https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-issues/#api-rest-api-3-issue-issueidorkey-get) or [searching](https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-issue-search/#api-rest-api-3-search-jql-get) issues)
+- exporting media nodes is disabled by default
+  - you can enable it by calling `includeMedia()` of the exporter:
+
+    ```php
+    $exporter = new DocumentExporter($document);
+    $html = $exporter->includeMedia()->export();
+    
+    // or
+    
+    $exporter = new DocumentExporter($document);
+    $exporter->includeMedia();
+    $html = $exporter->export();
+    ```
+
 ## Contributing
 
 `adf-tools` is an open source project. Contributions made by the community are welcome.

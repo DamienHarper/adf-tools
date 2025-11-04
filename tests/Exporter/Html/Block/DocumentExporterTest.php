@@ -216,8 +216,22 @@ final class DocumentExporterTest extends TestCase
             ->end()
         ;
         $exporter = new DocumentExporter($document);
+        $exporter->includeMedia();
 
         self::assertSame('<div class="adf-container"><div class="adf-mediasingle"><div class="adf-media"><!--{"type":"media","attrs":{"id":"6e7c7f2c-dd7a-499c-bceb-6f32bfbf30b5","type":"file","collection":"my project files","width":110.7,"height":200}}--><p>Atlassian Media API is not publicly available at the moment.</p></div></div></div>', $exporter->export());
+    }
+
+    public function testDocumentWithMediaSingleDisabled(): void
+    {
+        $document = (new Document())
+            ->mediaSingle(MediaSingle::LAYOUT_WIDE)
+            ->media('6e7c7f2c-dd7a-499c-bceb-6f32bfbf30b5', Media::TYPE_FILE, 'my project files', 100, 200)
+            ->end()
+            ->end()
+        ;
+        $exporter = new DocumentExporter($document);
+
+        self::assertSame('<div class="adf-container"></div>', $exporter->export());
     }
 
     public function testDocumentWithMediaGroup(): void
@@ -231,8 +245,24 @@ final class DocumentExporterTest extends TestCase
             ->end()
         ;
         $exporter = new DocumentExporter($document);
+        $exporter->includeMedia();
 
         self::assertSame('<div class="adf-container"><div class="adf-mediagroup"><div class="adf-media"><!--{"type":"media","attrs":{"id":"6e7c7f2c-dd7a-499c-bceb-6f32bfbf30b5","type":"file","collection":"my project files","width":100.34,"height":200}}--><p>Atlassian Media API is not publicly available at the moment.</p></div><div class="adf-media"><!--{"type":"media","attrs":{"id":"7a7c7f2c-dd7a-499c-bceb-6f32bfbf30c7","type":"file","collection":"my project files","width":100,"height":220.5}}--><p>Atlassian Media API is not publicly available at the moment.</p></div></div></div>', $exporter->export());
+    }
+
+    public function testDocumentWithMediaGroupDisabled(): void
+    {
+        $document = (new Document())
+            ->mediaGroup()
+            ->media('6e7c7f2c-dd7a-499c-bceb-6f32bfbf30b5', Media::TYPE_FILE, 'my project files', 100, 200)
+            ->end()
+            ->media('7a7c7f2c-dd7a-499c-bceb-6f32bfbf30c7', Media::TYPE_FILE, 'my project files', 100, 200)
+            ->end()
+            ->end()
+        ;
+        $exporter = new DocumentExporter($document);
+
+        self::assertSame('<div class="adf-container"></div>', $exporter->export());
     }
 
     public function testDocumentWithTable(): void
@@ -280,6 +310,7 @@ TXT;
 
         \assert($document instanceof Document);
         $exporter = new DocumentExporter($document);
+        $exporter->includeMedia();
 
         $expected = <<<'TXT'
 <div class="adf-container"><h1>En-tête #1</h1><p><span style="color: #008da6"><strong>lorem</strong></span> <span style="color: #6554c0">ipsum</span> <span style="color: #4c9aff"><strong>dolor</strong></span> <span style="color: #00b8d9">sit</span> <span style="color: #ffc400"><strong>amet</strong></span></p><p><strong>lorem</strong> <em>ipsum</em> <u>dolor</u> <s>sit</s> <pre>amet</pre></p><p><sub><strong>lorem</strong></sub> <sup><em>ipsum</em></sup></p><ul><li><p>item 1</p></li><li><p>item 2</p><ul><li><p>item 2.1</p></li><li><p>item 2.2</p></li></ul></li><li><p>item 3</p></li></ul><p><a href="https://www.google.fr" title="Google">This is a link!</a></p><h2>En-tête #2</h2><p>lorem ipsum</p><ol><li><p>item 1</p></li><li><p>item 2</p></li><li><p>item 3</p><ol><li><p>item 3.1</p></li><li><p>item 3.2</p></li></ol></li></ol><ul class="adf-task-list" style="list-style-type: none"><li><label><input class="adf-task-checkbox" type="checkbox" disabled >Test Task 1</label></li><li><label><input class="adf-task-checkbox" type="checkbox" disabled checked>Test Task 2</label></li></ul><h3>En-tête #3</h3><p>lorem ipsum</p><p><div class="adf-inline-card">https://github.com</div> </p><div class="adf-mediasingle"><div class="adf-media"><!--{"type":"media","attrs":{"id":"d7174b86-2fb7-4126-991d-0e2fc9f0dac7","type":"file","collection":"","width":483,"height":130}}--><p>Atlassian Media API is not publicly available at the moment.</p></div></div><p>Yo <span class="adf-mention">@Damien Harper</span>, tu peux check ce ticket please <img class="adf-emoji" loading="lazy" src="https://pf-emoji-service--cdn.us-east-1.prod.public.atl-paas.net/standard/a51a7674-8d5d-4495-a2d2-a67c090f5c3b/64x64/1f4a9.png" alt=":poop:" width="20" height="20"> </p><table class="adf-table-default"><tbody><tr><th><p><strong>Col 1</strong></p></th><th><p><strong>Col 2</strong></p></th><th><p><strong>Col 3</strong></p></th></tr><tr><td><p><strong>lorem</strong></p></td><td><p><em>ipsum</em></p></td><td><ul><li><p>item 1</p></li><li><p>item 2</p></li></ul></td></tr><tr><td><p>dolor</p></td><td><p>sit</p></td><td><p><u><span style="color: #00b8d9"><strong>amet</strong></span></u></p></td></tr></tbody></table><hr/><pre class="php"><?php
