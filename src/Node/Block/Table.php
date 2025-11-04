@@ -43,8 +43,9 @@ class Table extends BlockNode
         $this->isNumberColumnEnabled = $isNumberColumnEnabled;
         $this->localId = $localId;
 
-        if ($width !== null)
+        if (null !== $width) {
             $width = abs($width);
+        }
         $this->width = $width;
     }
 

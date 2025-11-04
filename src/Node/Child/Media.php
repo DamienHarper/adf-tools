@@ -36,12 +36,14 @@ class Media extends Node
         $this->collection = $collection;
         $this->occurrenceKey = $occurrenceKey;
 
-        if (is_float($width))
+        if (\is_float($width)) {
             $width = round($width, 2);
+        }
         $this->width = $width;
 
-        if (is_float($height))
+        if (\is_float($height)) {
             $height = round($height, 2);
+        }
         $this->height = $height;
     }
 

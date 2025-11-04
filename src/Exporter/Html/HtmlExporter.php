@@ -140,7 +140,7 @@ abstract class HtmlExporter implements ExporterInterface
     {
         // skip parsing media if includeMedia is false
         if (!$this->includeMedia && ($this->node instanceof MediaSingle || $this->node instanceof MediaGroup)) {
-            return "";
+            return '';
         }
 
         $outputs = [];
@@ -168,20 +168,24 @@ abstract class HtmlExporter implements ExporterInterface
 
         if (1 === \count($this->tags)) {
             // no closing tag
-            return $this->tags[0] . $output;
+            return $this->tags[0].$output;
         }
 
         // opening and closing tags
-        return $this->tags[0] . $output . $this->tags[1];
+        return $this->tags[0].$output.$this->tags[1];
     }
 
     /**
-     * Enable output of Media Nodes
+     * Enable output of Media Nodes.
+     *
      * @param bool $incl If media should be included
+     *
      * @return $this
      */
-    public function includeMedia(bool $incl = true): self {
+    public function includeMedia(bool $incl = true): self
+    {
         $this->includeMedia = $incl;
+
         return $this;
     }
 }

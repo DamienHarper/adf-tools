@@ -50,8 +50,9 @@ class MediaSingle extends BlockNode implements JsonSerializable
         parent::__construct($parent);
         $this->layout = $layout;
 
-        if (is_float($width))
+        if (\is_float($width)) {
             $width = round($width, 2);
+        }
         $this->width = $width;
     }
 

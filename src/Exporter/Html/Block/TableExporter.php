@@ -14,6 +14,6 @@ class TableExporter extends HtmlExporter
         parent::__construct($node);
         // TODO: implement numbered rows
         // TODO: implement width
-        $this->tags = [sprintf('<table class="adf-table adf-table-%s"><tbody>', $node->getLayout()), '</tbody></table>'];
+        $this->tags = [\sprintf('<table class="adf-table adf-table-%s"><tbody>', $node->getLayout()), '</tbody></table>'];
     }
 }
