@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DH\Adf\Node\Block;
 
+use DH\Adf\Builder\ExtensionBuilder;
 use DH\Adf\Builder\InlineNodeBuilder;
 use DH\Adf\Builder\TextBuilder;
 use DH\Adf\Node\BlockNode;
@@ -16,6 +17,7 @@ use JsonSerializable;
  */
 class Paragraph extends BlockNode implements JsonSerializable
 {
+    use ExtensionBuilder;
     use InlineNodeBuilder;
     use TextBuilder;
 
