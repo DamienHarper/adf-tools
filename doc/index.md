@@ -206,6 +206,7 @@ Each node has a default HTML representation with CSS class to help further styli
 | block     | `DH\Adf\Node\Block\Document`    | `DH\Adf\Exporter\Html\Block\DocumentExporter`    | `<div class="adf-container">`                                                                                                                                                         | `</div>`              |                         |
 | block     | `DH\Adf\Node\Block\Blockquote`  | `DH\Adf\Exporter\Html\Block\BlockquoteExporter`  | `<blockquote>`                                                                                                                                                                        | `</blockquote>`       |                         |
 | block     | `DH\Adf\Node\Block\BulletList`  | `DH\Adf\Exporter\Html\Block\BulletListExporter`  | `<ul>`                                                                                                                                                                                | `</ul>`               |                         |
+| block     | `DH\Adf\Node\Block\TaskList`    | `DH\Adf\Exporter\Html\Block\TaskListExporter`    | `<ul class="adf-task-list" style="list-style-type: none">`                                                                                                                            | `</ul>`               |                         |
 | block     | `DH\Adf\Node\Block\CodeBlock`   | `DH\Adf\Exporter\Html\Block\CodeBlockExporter`   | `<pre class="[LANGUAGE_NAME]">`                                                                                                                                                       | `</pre>`              |                         |
 | block     | `DH\Adf\Node\Block\Heading`     | `DH\Adf\Exporter\Html\Block\HeadingExporter`     | `<h[HEADING_LEVEL]>`                                                                                                                                                                  | `</h[HEADING_LEVEL]>` |                         |
 | block     | `DH\Adf\Node\Block\MediaGroup`  | `DH\Adf\Exporter\Html\Block\MediaGroupExporter`  | `<div class="adf-mediagroup">`                                                                                                                                                        | `</div>`              |                         |
@@ -214,9 +215,10 @@ Each node has a default HTML representation with CSS class to help further styli
 | block     | `DH\Adf\Node\Block\Panel`       | `DH\Adf\Exporter\Html\Block\PanelExporter`       | `<div class="adf-panel adf-panel-[PANEL_TYPE]"><div class="adf-panel-icon"><span role="img" aria-label="Panel [PANEL_TYPE]">[PANEL_ICON]</span></div><div class="adf-panel-content">` | `</div></div>`        |                         |
 | block     | `DH\Adf\Node\Block\Paragraph`   | `DH\Adf\Exporter\Html\Block\ParagraphExporter`   | `<p>`                                                                                                                                                                                 | `</p>`                |                         |
 | block     | `DH\Adf\Node\Block\Rule`        | `DH\Adf\Exporter\Html\Block\RuleExporter`        | `<hr/>`                                                                                                                                                                               |                       |                         |
-| block     | `DH\Adf\Node\Block\Table`       | `DH\Adf\Exporter\Html\Block\TableExporter`       | `<table class="adf-table-[TABLE_LAYOUT]"><tbody>`                                                                                                                                     | `</tbody></table>`    |                         |
-| block     | `DH\Adf\Node\Block\Expand`      | `DH\Adf\Exporter\Html\Block\ExpandExporter`      | `<div class="adf-expand"><div class="adf-expand-title">[EXPAND_TITLE]</div><div class="adf-expand-body">`                                                                             | `</div></div>`        |                         |
+| block     | `DH\Adf\Node\Block\Table`       | `DH\Adf\Exporter\Html\Block\TableExporter`       | `<table class="adf-table adf-table-[TABLE_LAYOUT]"><tbody>`                                                                                                                           | `</tbody></table>`    |                         |
+| block     | `DH\Adf\Node\Block\Expand`      | `DH\Adf\Exporter\Html\Block\ExpandExporter`      | `<details class="adf-expand"><summary class="adf-expand-title">[EXPAND_TITLE]</summary><div class="adf-expand-body">`                                                                 | `</div></details>`    |                         |
 | child     | `DH\Adf\Node\Child\ListItem`    | `DH\Adf\Exporter\Html\Child\ListItemExporter`    | `<li>`                                                                                                                                                                                | `</li>`               |                         |
+| child     | `DH\Adf\Node\Child\TaskItem`    | `DH\Adf\Exporter\Html\Child\TaskItemExporter`    | `<li><label><input class="adf-task-checkbox" type="checkbox" disabled [CHECKED]>`                                                                                                     | `</label></li>`       |                         |
 | child     | `DH\Adf\Node\Child\TableCell`   | `DH\Adf\Exporter\Html\Child\TableCellExporter`   | `<td[style="background-color: CELL_BACKGROUND"][colspan="[CELL_COLSPAN]"][rowspan="[CELL_ROWSPAN]"]>`                                                                                 | `</td>`               |                         |
 | child     | `DH\Adf\Node\Child\TableHeader` | `DH\Adf\Exporter\Html\Child\TableHeaderExporter` | `<th>`                                                                                                                                                                                | `</th>`               |                         |
 | child     | `DH\Adf\Node\Child\TableRow`    | `DH\Adf\Exporter\Html\Child\TableRowExporter`    | `<tr>`                                                                                                                                                                                | `</tr>`               |                         |
@@ -261,6 +263,25 @@ $document = (new Document())
 $exporter = new DocumentExporter($document);
 $html = $exporter->export();
 ```
+
+#### Media Export
+
+- converting media (attachments) to HTML is currently not supported
+  - (will display as `Atlassian Media API is not publicly available at the moment.`)
+  - you can fetch attachments via the Rest API separately ([GET Attachment](https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-issue-attachments/#api-rest-api-3-attachment-content-id-get) or with the `attachment` key when [getting](https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-issues/#api-rest-api-3-issue-issueidorkey-get) or [searching](https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-issue-search/#api-rest-api-3-search-jql-get) issues)
+- exporting media nodes is disabled by default
+  - you can enable it by calling `includeMedia()` of the exporter:
+
+    ```php
+    $exporter = new DocumentExporter($document);
+    $html = $exporter->includeMedia()->export();
+    
+    // or
+    
+    $exporter = new DocumentExporter($document);
+    $exporter->includeMedia();
+    $html = $exporter->export();
+    ```
 
 ## Contributing
 

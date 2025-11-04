@@ -17,11 +17,13 @@ use DH\Adf\Node\Block\Panel;
 use DH\Adf\Node\Block\Paragraph;
 use DH\Adf\Node\Block\Rule;
 use DH\Adf\Node\Block\Table;
+use DH\Adf\Node\Block\TaskList;
 use DH\Adf\Node\Child\ListItem;
 use DH\Adf\Node\Child\Media;
 use DH\Adf\Node\Child\TableCell;
 use DH\Adf\Node\Child\TableHeader;
 use DH\Adf\Node\Child\TableRow;
+use DH\Adf\Node\Child\TaskItem;
 use DH\Adf\Node\Inline\Date;
 use DH\Adf\Node\Inline\Emoji;
 use DH\Adf\Node\Inline\Hardbreak;
@@ -50,6 +52,7 @@ abstract class Node implements JsonSerializable
         'doc' => Document::class,
         'blockquote' => Blockquote::class,
         'bulletList' => BulletList::class,
+        'taskList' => TaskList::class,
         'codeBlock' => CodeBlock::class,
         'heading' => Heading::class,
         'mediaGroup' => MediaGroup::class,
@@ -63,6 +66,7 @@ abstract class Node implements JsonSerializable
 
         // child nodes
         'listItem' => ListItem::class,
+        'taskItem' => TaskItem::class,
         'tableCell' => TableCell::class,
         'tableHeader' => TableHeader::class,
         'tableRow' => TableRow::class,
@@ -125,7 +129,7 @@ abstract class Node implements JsonSerializable
         self::checkNodeData(static::class, $data);
 
         if (static::class !== self::NODE_MAPPING[$data['type']]) {
-            throw new InvalidArgumentException(sprintf('Invalid data for "%s" node type', $data['type']));
+            throw new InvalidArgumentException(\sprintf('Invalid data for "%s" node type', $data['type']));
         }
 
         $class = self::NODE_MAPPING[$data['type']];
@@ -150,7 +154,7 @@ abstract class Node implements JsonSerializable
     {
         foreach ($keys as $key) {
             if (!\array_key_exists($key, $data)) {
-                throw new InvalidArgumentException(sprintf('Missing "%s" key in node data.', $key));
+                throw new InvalidArgumentException(\sprintf('Missing "%s" key in node data.', $key));
             }
         }
     }
@@ -160,7 +164,7 @@ abstract class Node implements JsonSerializable
         self::checkRequiredKeys(array_merge(['type'], $keys), $data);
 
         if (static::class !== self::NODE_MAPPING[$data['type']]) {
-            throw new InvalidArgumentException(sprintf('Invalid data for "%s" node type', $data['type']));
+            throw new InvalidArgumentException(\sprintf('Invalid data for "%s" node type', $data['type']));
         }
     }
 }

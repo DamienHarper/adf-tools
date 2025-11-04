@@ -1,85 +1,85 @@
 name: adf-tools 1.x CI
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    push:
+        branches: [ main ]
+    pull_request:
+        branches: [ main ]
 
 jobs:
-  ci:
-    name: Build & Tests
-    runs-on: ubuntu-latest
+    ci:
+        name: Build & Tests
+        runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: 8.1
-          extensions: composer:v2, flex, pcov
-          coverage: pcov
+            - name: Setup PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: 8.1
+                  extensions: composer:v2, flex, pcov
+                  coverage: pcov
 
-      - name: Cache Composer packages
-        id: composer-cache
-        uses: actions/cache@v2
-        with:
-          path: vendor
-          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-php-
+            - name: Cache Composer packages
+              id: composer-cache
+              uses: actions/cache@v4
+              with:
+                  path: vendor
+                  key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+                  restore-keys: |
+                      ${{ runner.os }}-php-
 
-      - name: Install vendors
-        run: composer install --no-progress --ansi --no-scripts
+            - name: Install vendors
+              run: composer install --no-progress --ansi --no-scripts
 
-      - name: Install PHPStan
-        run: composer install --no-progress --ansi --working-dir=tools/phpstan
+            - name: Install PHPStan
+              run: composer install --no-progress --ansi --working-dir=tools/phpstan
 
-      - name: Install PHP-CS-Fixer
-        run: composer install --no-progress --ansi --working-dir=tools/php-cs-fixer
+            - name: Install PHP-CS-Fixer
+              run: composer install --no-progress --ansi --working-dir=tools/php-cs-fixer
 
-      - name: Validate composer
-        run: composer validate --no-check-lock
+            - name: Validate composer
+              run: composer validate --no-check-lock
 
-      - name: Run PHP-CS-Fixer
-        run: composer cs-check
+            - name: Run PHP-CS-Fixer
+              run: composer cs-check
 
-      - name: Run PHPStan
-        run: composer phpstan
+            - name: Run PHPStan
+              run: composer phpstan
 
-      - name: Run PHPUnit tests
-        run: |
-          RAW_CODECOV_REPORT="php-coverage"
-          echo "CODECOV_REPORT=$(echo $RAW_CODECOV_REPORT | sed 's/\.\*//')" >> $GITHUB_ENV
-          vendor/bin/phpunit -c phpunit.xml --coverage-clover=coverage.xml
+            - name: Run PHPUnit tests
+              run: |
+                  RAW_CODECOV_REPORT="php-coverage"
+                  echo "CODECOV_REPORT=$(echo $RAW_CODECOV_REPORT | sed 's/\.\*//')" >> $GITHUB_ENV
+                  vendor/bin/phpunit -c phpunit.xml --coverage-clover=coverage.xml
 
-      - name: Upload coverage file
-        uses: actions/upload-artifact@v2
-        with:
-          name: ${{ env.CODECOV_REPORT }}
-          path: coverage.xml
+            - name: Upload coverage file
+              uses: actions/upload-artifact@v4
+              with:
+                  name: ${{ env.CODECOV_REPORT }}
+                  path: coverage.xml
 
-  upload_coverage:
-    name: "Upload coverage to Codecov"
-    runs-on: "ubuntu-latest"
-    needs:
-      - ci
+    upload_coverage:
+        name: "Upload coverage to Codecov"
+        runs-on: "ubuntu-latest"
+        needs:
+            - ci
 
-    steps:
-      - name: "Checkout"
-        uses: "actions/checkout@v2"
-        with:
-          fetch-depth: 2
+        steps:
+            - name: "Checkout"
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 2
 
-      - name: "Download coverage files"
-        uses: "actions/download-artifact@v2"
-        with:
-          path: "reports"
+            - name: "Download coverage files"
+              uses: actions/download-artifact@v4
+              with:
+                  path: "reports"
 
-      - name: "Upload to Codecov"
-        uses: "codecov/codecov-action@v2"
-        with:
-          directory: reports
-          token: ${{ env.CODECOV_TOKEN }}
+            - name: "Upload to Codecov"
+              uses: codecov/codecov-action@v4
+              with:
+                  directory: reports
+                  token: ${{ env.CODECOV_TOKEN }}

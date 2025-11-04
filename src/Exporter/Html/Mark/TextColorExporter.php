@@ -22,6 +22,6 @@ class TextColorExporter extends HtmlExporter
     {
         \assert($this->node instanceof TextColor);
 
-        return sprintf($this->tags[0], $this->node->getColor()).$this->text.$this->tags[1];
+        return \sprintf($this->tags[0], $this->node->getColor()).$this->text.$this->tags[1];
     }
 }

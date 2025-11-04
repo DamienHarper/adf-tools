@@ -15,18 +15,18 @@ class TableCellExporter extends HtmlExporter
 
         $attributes = [];
         if (null !== $node->getBackground()) {
-            $attributes[] = sprintf('style="background-color: %s"', $node->getBackground());
+            $attributes[] = \sprintf('style="background-color: %s"', $node->getBackground());
         }
         if (null !== $node->getColspan()) {
-            $attributes[] = sprintf('colspan="%s"', $node->getColspan());
+            $attributes[] = \sprintf('colspan="%s"', $node->getColspan());
         }
         if (null !== $node->getRowspan()) {
-            $attributes[] = sprintf('rowspan="%s"', $node->getRowspan());
+            $attributes[] = \sprintf('rowspan="%s"', $node->getRowspan());
         }
         // TODO: support colwidth
 
         $this->tags = [
-            sprintf('<td%s>', implode(' ', $attributes)),
+            \sprintf('<td%s>', implode(' ', $attributes)),
             '</td>',
         ];
     }

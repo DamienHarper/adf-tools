@@ -39,7 +39,7 @@ final class BlockquoteExporterTest extends TestCase
     {
         $node = (new Blockquote())
             ->paragraph()
-            ->emoji('poop', '1f4a9', '\\ud83d\\udca9')
+            ->emoji('poop', '1f4a9', '\ud83d\udca9')
             ->end()
         ;
         $exporter = new BlockquoteExporter($node);

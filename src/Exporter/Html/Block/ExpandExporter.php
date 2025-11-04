@@ -12,6 +12,6 @@ class ExpandExporter extends HtmlExporter
     public function __construct(Expand $node)
     {
         parent::__construct($node);
-        $this->tags = ['<div class="adf-expand"><div class="adf-expand-title">'.$node->getTitle().'</div><div class="adf-expand-body">', '</div></div>'];
+        $this->tags = ['<details class="adf-expand"><summary class="adf-expand-title">'.$node->getTitle().'</summary><div class="adf-expand-body">', '</div></details>'];
     }
 }

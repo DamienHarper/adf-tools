@@ -12,7 +12,7 @@ class StatusExporter extends HtmlExporter
     public function __construct(Status $node)
     {
         parent::__construct($node);
-        $this->tags = [sprintf('<span class="adf-status adf-status-%s">', $node->getColor()), '</span>'];
+        $this->tags = [\sprintf('<span class="adf-status adf-status-%s">', $node->getColor()), '</span>'];
     }
 
     public function export(): string
