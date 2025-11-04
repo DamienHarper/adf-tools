@@ -97,6 +97,42 @@ $document = (new Document())
 ```
 
 
+### Alternative usage
+Alternatively, it is possible to compose a document using node objects directly via the `BlockNode::append` method.
+
+```php
+$document = (new Document())
+    ->append(
+        (new BulletList())
+            ->append(
+                (new ListItem())
+                    ->append(
+                        (new Paragraph())
+                            ->append(new Text('item 1'))
+                    ),
+                (new ListItem())
+                    ->append(
+                        (new Paragraph())
+                            ->append(new Text('item 2'))
+                    )
+                    
+            )
+    )
+;
+```
+
+In this case, it will be possible to create and append nodes dynamically:
+```php
+$paragraph = (new Paragraph())->append(new Text('Line 1'));
+
+if (some condition) {
+    $paragraph->append(new Text('(doc)', new Link('https://example.com/doc')));
+}
+
+$document = (new Document())->append($paragraph);
+```
+
+
 ### Loading an ADF JSON document
 
 ```php

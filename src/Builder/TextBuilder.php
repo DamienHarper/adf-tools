@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DH\Adf\Builder;
 
+use DH\Adf\Node\BlockNode;
 use DH\Adf\Node\Inline\Text;
 use DH\Adf\Node\Mark\Em;
 use DH\Adf\Node\Mark\Link;
@@ -79,5 +80,5 @@ trait TextBuilder
         return $this;
     }
 
-    abstract protected function append(Node $node): void;
+    abstract public function append(Node ...$nodes): BlockNode;
 }

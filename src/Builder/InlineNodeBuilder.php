@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DH\Adf\Builder;
 
+use DH\Adf\Node\BlockNode;
 use DH\Adf\Node\Inline\Emoji;
 use DH\Adf\Node\Inline\Hardbreak;
 use DH\Adf\Node\Inline\Mention;
@@ -34,5 +35,5 @@ trait InlineNodeBuilder
         return $this;
     }
 
-    abstract protected function append(Node $node): void;
+    abstract public function append(Node ...$nodes): BlockNode;
 }
