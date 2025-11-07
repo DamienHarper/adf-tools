@@ -17,6 +17,10 @@ class Table extends BlockNode
 {
     use TableRowBuilder;
 
+    public const LAYOUT_DEFAULT = 'default';
+    public const LAYOUT_FULL_WIDTH = 'full-width';
+    public const LAYOUT_WIDE = 'wide';
+
     public const LAYOUT_START = 'align-start';
     public const LAYOUT_CENTER = 'center';
 
@@ -29,9 +33,12 @@ class Table extends BlockNode
     private ?string $localId;
     private ?int $width = null;
 
-    public function __construct(string $layout = 'align-start', bool $isNumberColumnEnabled = false, ?int $width = null, ?string $localId = null, ?BlockNode $parent = null)
+    public function __construct(string $layout = self::LAYOUT_DEFAULT, bool $isNumberColumnEnabled = false, ?int $width = null, ?string $localId = null, ?BlockNode $parent = null)
     {
         if (!\in_array($layout, [
+            self::LAYOUT_DEFAULT,
+            self::LAYOUT_FULL_WIDTH,
+            self::LAYOUT_WIDE,
             self::LAYOUT_START,
             self::LAYOUT_CENTER,
         ], true)) {
